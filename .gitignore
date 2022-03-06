@@ -1,0 +1,23 @@
+# Distribution / packaging
+build/
+wheels/
+sdist/
+dist/
+
+*.swp
+__pycache__
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# IPython
+profile_default/
+ipython_config.py
+
+# vim
+.vim/

@@ -1,0 +1,104 @@
+site_name: anac 
+nav:
+  - Introduction: index.md
+  - Usage: usage.md
+  - Exceptions: exceptions.md
+
+site_author: Pavel Shemetov
+site_description: >-
+       Async NetBox API Client 
+# Repository
+repo_name: timeforplanb123/anac
+repo_url: https://github.com/timeforplanb123/anac
+edit_uri: ""
+theme:
+  name: material
+
+  # 404 page
+  static_templates:
+    - 404.html
+
+  # Don't include MkDocs' JavaScript
+  include_search_page: false
+  search_index_only: true
+
+  language: en
+  features:
+    - navigation.top
+    - navigation.instant
+
+  palette:
+
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: lime 
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to light mode
+
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: lime 
+      accent: lime
+      toggle:
+        icon: material/lightbulb
+        name: Switch to dark mode
+  font:
+    text: Manrope
+    code: Fira Mono
+  logo: 
+  favicon:
+  icon:
+      repo: fontawesome/brands/github-alt
+
+# Customization
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/timeforplanb123
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/timeforplanb1
+
+extra_css:
+  - stylesheets/extra.css
+
+# Extensions
+markdown_extensions:
+  - mkautodoc
+  - markdown.extensions.admonition
+  - markdown.extensions.attr_list
+  - markdown.extensions.codehilite:
+      guess_lang: false
+  - markdown.extensions.def_list
+  - markdown.extensions.footnotes
+  - markdown.extensions.meta
+  - markdown.extensions.toc:
+      permalink: "#"
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight:
+      linenums_style: pymdownx-inline
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde

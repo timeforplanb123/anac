@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "anac"
+version = "0.1.1"
+description = "Async NetBox API Client"
+license = "Apache-2.0"
+readme = "README.md"
+keywords = ["netbox", "api"]
+repository = "https://github.com/timeforplanb123/anac"
+documentation = "https://timeforplanb123.github.io/anac/"
+authors = ["Pavel Shemetov <pshemetov123@gmail.com>"]
+classifiers = [
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+httpx = "^0.22.0"
+pydantic = "^1.9.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
