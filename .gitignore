@@ -21,3 +21,14 @@ ipython_config.py
 
 # vim
 .vim/
+
+# Unit test / coverage reports
+.nox/
+.coverage
+.coverage.*
+.cache
+coverage.xml
+*.cover
+*.py,cover
+.pytest_cache/
+cover/

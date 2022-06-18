@@ -1,10 +1,11 @@
-import httpx
 from json import JSONDecodeError
+
+import httpx
 
 
 class RequestDataError(Exception):
-    """For invalid http request data
-    """
+    """For invalid http request data"""
+
     def __init__(self, message: str, method: str) -> None:
         super().__init__(message)
         self.message = message
@@ -15,8 +16,8 @@ class RequestDataError(Exception):
 
 
 class RequestParamsError(Exception):
-    """For invalid http request params
-    """
+    """For invalid http request params"""
+
     def __init__(self, message: str) -> None:
         super().__init__(message)
         self.message = message
@@ -28,8 +29,7 @@ class RequestParamsError(Exception):
 # classic httpx.Response.raise_for_status() function, but with minor changes
 # https://github.com/encode/httpx/blob/321d4aa5097fe7f24cdfed7191c44de589294780/httpx/_models.py#L1475
 def raise_for_status(response: httpx.Response) -> None:
-    """Raise the `HTTPStatusError` if one occurred.
-    """
+    """Raise the `HTTPStatusError` if one occurred."""
     request = response._request
     if request is None:
         raise RuntimeError(

@@ -1,0 +1,51 @@
+name: Commit
+
+on: [push, pull_request]
+
+jobs:
+  linters:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.8', '3.9', '3.10']
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3 
+      - name: Setup python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with: 
+          python-version: ${{ matrix.version }}
+      - name: Setup environment
+        run: |
+          pip install --upgrade pip
+          pip install nox==2022.1.7
+          pip install poetry==1.1.13
+      - name: Run nox lint and mypy
+        run: nox -rs lint mypy -- anac ./noxfile.py
+      - name: Cache nox virtual environments
+        id: cache-nox-ve
+        uses: actions/cache@v3
+        with:
+          path: ~/.nox
+          key: ${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}
+          restore-keys: ${{ matrix.python-version }}-
+
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.8', '3.9', '3.10']
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3 
+      - name: Setup python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with: 
+          python-version: ${{ matrix.version }}
+      - name: Setup environment
+        run: |
+          pip install --upgrade pip
+          pip install nox==2022.1.7
+          pip install poetry==1.1.13
+      - name: Run nox tests 
+        run: nox -s unit_tests -- -vs 

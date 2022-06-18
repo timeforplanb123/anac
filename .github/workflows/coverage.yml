@@ -1,0 +1,23 @@
+name: Coverage
+
+on: push
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+    - name: Setup python 
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.10'
+    - name: Setup environment
+      run: |
+        pip install --upgrade pip
+        pip install nox==2022.1.7
+        pip install poetry==1.1.13
+    - name: Run nox tests and upload coverage  
+      run: nox -s unit_tests-3.10 coverage
+      env:
+        CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}

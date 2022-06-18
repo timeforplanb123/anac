@@ -1,12 +1,14 @@
 import tempfile
+from typing import Any
 
 import nox
+from nox.sessions import Session
 
 
 locations = "anac", "tests", "noxfile.py"
 
 
-def install_with_constraints(session, *args, **kwargs):
+def install_with_constraints(session: Session, *args: str, **kwargs: Any) -> None:
     with tempfile.NamedTemporaryFile() as requirements:
         session.run(
             "poetry",
@@ -20,8 +22,8 @@ def install_with_constraints(session, *args, **kwargs):
         session.install(f"--constraint={requirements.name}", *args, **kwargs)
 
 
-@nox.session(python=["3.10", "3.9", "3.8"])
-def lint(session):
+@nox.session(python=["3.8", "3.9", "3.10"])
+def lint(session: Session) -> None:
     args = session.posargs or locations
     install_with_constraints(
         session,
@@ -34,8 +36,8 @@ def lint(session):
     session.run("flake8", *args)
 
 
-@nox.session(python=["3.10", "3.9", "3.8"])
-def unit_tests(session):
+@nox.session(python=["3.8", "3.9", "3.10"])
+def unit_tests(session: Session) -> None:
     args = session.posargs or ["--cov"]
     session.run("poetry", "install", "--no-dev", external=True)
     install_with_constraints(
@@ -49,8 +51,15 @@ def unit_tests(session):
     session.run("pytest", *args)
 
 
-@nox.session(python=["3.10", "3.9", "3.8"])
-def mypy(session):
+@nox.session(python=["3.8", "3.9", "3.10"])
+def mypy(session: Session) -> None:
     args = session.posargs or locations
     install_with_constraints(session, "mypy")
     session.run("mypy", *args)
+
+
+@nox.session(python="3.10")
+def coverage(session: Session) -> None:
+    install_with_constraints(session, "coverage[toml]", "codecov")
+    session.run("coverage", "xml", "--fail-under=0")
+    session.run("codecov", *session.posargs)

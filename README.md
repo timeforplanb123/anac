@@ -1,7 +1,9 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-black?style=for-the-badge)](https://github.com/ambv/black)
-[![PyPI](https://img.shields.io/pypi/v/anac?style=for-the-badge)](https://pypi.org/project/anac)
+[![PyPI](https://img.shields.io/pypi/v/anac?style=for-the-badge&logo=pypi)](https://pypi.org/project/anac)
 [![License: APACHE-2.0](https://img.shields.io/github/license/timeforplanb123/anac?style=for-the-badge)](https://opensource.org/licenses/Apache-2.0)
 [![Docs](https://img.shields.io/badge/docs-passing-green?style=for-the-badge)](https://timeforplanb123.github.io/anac/)
+[![Codecov](https://img.shields.io/codecov/c/github/timeforplanb123/anac?style=for-the-badge&logo=codecov)](https://codecov.io/gh/timeforplanb123/anac)
+
 
 anac
 ==========
