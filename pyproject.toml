@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "anac"
-version = "0.1.1"
+version = "0.1.2"
 description = "Async NetBox API Client"
 license = "Apache-2.0"
 readme = "README.md"
