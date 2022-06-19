@@ -1,23 +1,25 @@
-import httpx
-import re
 import dataclasses
+from itertools import zip_longest
+from json import JSONDecodeError
+import re
+from typing import (
+    Any,
+    Coroutine,
+    Dict,
+    Iterator,
+    List,
+    TYPE_CHECKING,
+    TypeVar,
+    Union,
+)
+
+import httpx
 from pydantic import (
     BaseModel,
     validator,
 )
-from typing import (
-    Dict,
-    List,
-    Union,
-    Any,
-    TYPE_CHECKING,
-    TypeVar,
-    Coroutine,
-    Iterator,
-)
-from json import JSONDecodeError
-from itertools import zip_longest
-from .exceptions import RequestParamsError, RequestDataError, raise_for_status
+
+from .exceptions import raise_for_status, RequestDataError, RequestParamsError
 
 if TYPE_CHECKING:
     from .api import Api
@@ -126,8 +128,7 @@ class ValidateEndpoint(BaseModel):
         for key in v:
             if key not in ("get", "put", "post", "patch", "delete"):
                 raise ValueError(
-                    "Available arguments: "
-                    "'get', 'put', 'post', 'patch', 'delete'"
+                    "Available arguments: 'get', 'put', 'post', 'patch', 'delete'"
                 )
         return v
 
@@ -155,9 +156,7 @@ class EndpointAsIterator(EndpointBase):
             value = [*d.values()][0]
             if value:
                 if isinstance(value, list):
-                    for item in zip_longest(
-                        d, *d.values(), fillvalue="".join(d)
-                    ):
+                    for item in zip_longest(d, *d.values(), fillvalue="".join(d)):
                         yield dict([item])
                 else:
                     yield d
@@ -365,9 +364,7 @@ class ValidateEndpointId(BaseModel):
     def check_requests(cls, v: KwargsDict) -> KwargsDict:
         for key in v:
             if key not in ("get", "put", "patch", "delete"):
-                raise ValueError(
-                    "Available arguments: 'get', 'put', 'patch', 'delete'"
-                )
+                raise ValueError("Available arguments: 'get', 'put', 'patch', 'delete'")
         return v
 
 
@@ -429,6 +426,7 @@ class EndpointIdAsIterator:
         In [9]: test_device[1].name
         Out[9]: 'megatest'
     """
+
     responses: List[Any] = dataclasses.field(repr=False)
 
     def __post_init__(self) -> None:
@@ -481,6 +479,7 @@ class EndpointId(EndpointBase):
         In [4]: test_device.id
         Out[4]: 4010
     """
+
     kwargs: Dict[str, Any] = dataclasses.field(repr=False)
 
     def __post_init__(self) -> None:
@@ -506,9 +505,7 @@ class EndpointId(EndpointBase):
         if name in self.__dict__:
             return self.__dict__[name]
         else:
-            raise AttributeError(
-                f"'{str(self)}' object has no attribute '{name}'"
-            )
+            raise AttributeError(f"'{str(self)}' object has no attribute '{name}'")
 
     async def __call__(
         self, **kwargs: Dict[str, Any]
@@ -634,6 +631,7 @@ class EndpointIdIterator:
         In [4]: len(all_devices)
         Out[4]: 100
     """
+
     api: "Api"
     url: str
     endpoint: str
@@ -686,9 +684,7 @@ class EndpointIdIterator:
                 kwargs=self.dict_data,
             )
         self._responses = [
-            EndpointId(
-                api=self.api, url=self.url, endpoint=self.endpoint, kwargs=data
-            )
+            EndpointId(api=self.api, url=self.url, endpoint=self.endpoint, kwargs=data)
             for data in self.list_data
         ]
         return self

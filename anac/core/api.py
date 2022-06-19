@@ -1,9 +1,11 @@
-import httpx
 import re
+from typing import Any, Dict, TypeVar
+
+import httpx
 from pydantic.dataclasses import dataclass
-from typing import Dict, Any, TypeVar
-from .exceptions import raise_for_status
+
 from .endpoint import Endpoint
+from .exceptions import raise_for_status
 
 A = TypeVar("A", bound="Api")
 
@@ -36,6 +38,7 @@ class Api:
            ...: )
            ...: await a.openapi()
     """
+
     url: str
     token: str
 

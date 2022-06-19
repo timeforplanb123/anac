@@ -1,0 +1,8 @@
+[flake8]
+select = B,BLK,C,E,F,I,S,W
+max-complexity = 10
+ignore = E203,E501,W503
+per-file-ignores = tests/*:S101
+max-line-length = 88
+application-import-names = anac,tests
+import-order-style = google
