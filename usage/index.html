@@ -1,0 +1,1174 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Async NetBox API Client ">
+      
+      
+        <meta name="author" content="Pavel Shemetov">
+      
+      
+      <link rel="icon" href="..">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.6">
+    
+    
+      
+        <title>Usage - anac</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.4a0965b7.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Manrope:300,300i,400,400i,700,700i%7CFira+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Manrope";--md-code-font:"Fira Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="lime" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#api" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="anac" class="md-header__button md-logo" aria-label="anac" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            anac
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Usage
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="lime" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="lime" data-md-color-accent="lime"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/timeforplanb123/anac" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    timeforplanb123/anac
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="anac" class="md-nav__button md-logo" aria-label="anac" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    anac
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/timeforplanb123/anac" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    timeforplanb123/anac
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Usage
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Usage
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    Api
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#endpoint" class="md-nav__link">
+    Endpoint*
+  </a>
+  
+    <nav class="md-nav" aria-label="Endpoint*">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#endpoint_1" class="md-nav__link">
+    Endpoint
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#endpointid" class="md-nav__link">
+    EndpointId
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#endpointiditerator" class="md-nav__link">
+    EndpointIdIterator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#endpointasiterator" class="md-nav__link">
+    EndpointAsIterator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#endpointidasiterator" class="md-nav__link">
+    EndpointIdAsIterator
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-some-device-and-patch-it" class="md-nav__link">
+    get some device and patch it
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-some-2-devices-and-put-patch-them" class="md-nav__link">
+    get some 2 devices and put + patch them
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-all-devices" class="md-nav__link">
+    get all devices
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-all-devices-and-post-2-new-devices" class="md-nav__link">
+    get all devices and post 2 new devices
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-or-put-using-a-name-instead-of-an-id" class="md-nav__link">
+    post or put using a name instead of an id
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exceptions/" class="md-nav__link">
+        Exceptions
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    Api
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#endpoint" class="md-nav__link">
+    Endpoint*
+  </a>
+  
+    <nav class="md-nav" aria-label="Endpoint*">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#endpoint_1" class="md-nav__link">
+    Endpoint
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#endpointid" class="md-nav__link">
+    EndpointId
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#endpointiditerator" class="md-nav__link">
+    EndpointIdIterator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#endpointasiterator" class="md-nav__link">
+    EndpointAsIterator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#endpointidasiterator" class="md-nav__link">
+    EndpointIdAsIterator
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-some-device-and-patch-it" class="md-nav__link">
+    get some device and patch it
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-some-2-devices-and-put-patch-them" class="md-nav__link">
+    get some 2 devices and put + patch them
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-all-devices" class="md-nav__link">
+    get all devices
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-all-devices-and-post-2-new-devices" class="md-nav__link">
+    get all devices and post 2 new devices
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-or-put-using-a-name-instead-of-an-id" class="md-nav__link">
+    post or put using a name instead of an id
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+  <h1>Usage</h1>
+
+<h2 id="api">Api<a class="headerlink" href="#api" title="Permanent link">#</a></h2>
+<p>At first, get <code>Api</code> object and run <code>openapi</code> coroutine</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">anac</span> <span class="kn">import</span> <span class="n">api</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">api</span><span class="p">(</span>
+    <span class="s2">&quot;https://demo.netbox.dev&quot;</span><span class="p">,</span>
+    <span class="n">token</span><span class="o">=</span><span class="s2">&quot;cf1dc7b04de5f27cfc93aba9e3f537d2ad6fdf8c&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="c1"># get openapi spec and create attributes/endpoints</span>
+<span class="c1"># with python interpreter autocompletion</span>
+<span class="k">await</span> <span class="n">a</span><span class="o">.</span><span class="n">openapi</span><span class="p">()</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Use <a href="https://ipython.readthedocs.io/en/stable/">IPython</a> or Python 3.8+ with <code>python -m asyncio</code> to try this code interactively, as they support executing <code>async</code>/<code>await</code> expressions in the console.</p>
+</div>
+<h2 id="endpoint">Endpoint*<a class="headerlink" href="#endpoint" title="Permanent link">#</a></h2>
+<p>The fundamental anac principle is a minimalistic user interface.</p>
+<p>anac provides 5 <code>Endpoint*</code> classes, whose objects are a coroutine or coroutine iterators, for interacting with the NetBox API endpoints.</p>
+<p>Here is the diagram with these objects/coroutines:
+<div class="highlight"><pre><span></span><code>                                         EndpointIdAsIterator
+                                         /
+            EndpointIdIterator/EndpointId
+            /                            \
+Api-Endpoint                             EndpointId
+            \
+            EndpointAsIterator
+</code></pre></div>
+For example, basic <code>Endpoint</code> object is coroutine, that can return <code>EndpointIdIterator</code>/<code>EndpointId</code> or <code>EndpointAsIterator</code> objects, where <code>*Iterator</code> are coroutine iterators, and not <code>*Iterator</code> is a coroutine. </p>
+<h4 id="endpoint_1">Endpoint<a class="headerlink" href="#endpoint_1" title="Permanent link">#</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># use &#39;tab&#39; autocompletion</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">a</span><span class="o">.</span><span class="n">dcim_devices</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">Endpoint</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api&#39;</span><span class="p">,</span>
+<span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/devices/&#39;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">dcim_devices</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">anac</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">endpoint</span><span class="o">.</span><span class="n">Endpoint</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">a</span><span class="o">.</span><span class="n">circuits_circuits</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">Endpoint</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api&#39;</span><span class="p">,</span>
+<span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/circuits/circuits/&#39;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">circuits_circuits</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">anac</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">endpoint</span><span class="o">.</span><span class="n">Endpoint</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">a</span><span class="o">.</span><span class="n">dcim_cables_id</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">Endpoint</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api&#39;</span><span class="p">,</span>
+<span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/cables/</span><span class="si">{id}</span><span class="s1">/&#39;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">dcim_cables_id</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">anac</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">endpoint</span><span class="o">.</span><span class="n">Endpoint</span>
+</code></pre></div>
+<p><code>Endpoint</code> describes NetBox API endpoint object (<code>'/dcim/devices'</code>, <code>'/ipam/roles'</code>, ...) and, at the same time, it's a coroutine for interacting with NetBox API endpoint.</p>
+<p>You can run each <code>Endpoint</code> coroutine with:</p>
+<ul>
+<li>
+<p>dict argument to send http request and get result as <code>EndpointId</code> or <code>EndpointIdIterator</code> object
+    <div class="highlight"><pre><span></span><code><span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">some_device</span> <span class="o">=</span> <span class="k">await</span> <span class="n">a</span><span class="o">.</span><span class="n">dcim_devices</span><span class="p">(</span><span class="n">get</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dmi01-scranton-rtr01&quot;</span><span class="p">})</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">some_device</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">EndpointId</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api/dcim/devices/9/&#39;</span><span class="p">,</span>
+<span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/devices/&#39;</span><span class="p">)</span>
+</code></pre></div></p>
+<p>To continue working with <code>EndpointId</code> see <a href="#endpointid"><code>EndpointId</code></a></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># by default, you get 50 results,</span>
+<span class="c1"># but you can specify the required number with &#39;get={&quot;limit&quot;: 100}&#39;</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="n">all_devices</span> <span class="o">=</span> <span class="k">await</span> <span class="n">a</span><span class="o">.</span><span class="n">dcim_devices</span><span class="p">(</span><span class="n">get</span><span class="o">=</span><span class="p">{})</span>
+<span class="c1"># or</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="n">all_devices</span> <span class="o">=</span> <span class="k">await</span> <span class="n">a</span><span class="o">.</span><span class="n">dcim_devices</span><span class="p">()</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="n">all_devices</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="n">EndpointIdIterator</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api&#39;</span><span class="p">,</span>
+<span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/devices/&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>To continue working with <code>EndpointIdIterator</code> see <a href="#endpointiditerator"><code>EndpointIdIterator</code></a></p>
+</li>
+<li>
+<p>list of dicts arguments to get coroutine iterator as <code>EndpointAsIterator</code> object for pending http requests and running them in event loop with asyncio
+    <div class="highlight"><pre><span></span><code><span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">]:</span> <span class="n">devices</span> <span class="o">=</span> <span class="k">await</span> <span class="n">a</span><span class="o">.</span><span class="n">dcim_devices</span><span class="p">(</span>
+<span class="o">...</span><span class="p">:</span>     <span class="n">get</span><span class="o">=</span><span class="p">[</span>
+<span class="o">...</span><span class="p">:</span>         <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dmi01-scranton-rtr01&quot;</span><span class="p">},</span>
+<span class="o">...</span><span class="p">:</span>         <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dmi01-scranton-sw01&quot;</span><span class="p">},</span>
+<span class="o">...</span><span class="p">:</span>     <span class="p">],</span>
+<span class="o">...</span><span class="p">:</span>     <span class="n">post</span><span class="o">=</span><span class="p">[</span>
+<span class="o">...</span><span class="p">:</span>         <span class="p">{</span>
+<span class="o">...</span><span class="p">:</span>             <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dmi01-scranton-rtr02&quot;</span><span class="p">,</span>
+<span class="o">...</span><span class="p">:</span>             <span class="s2">&quot;device_role&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="o">...</span><span class="p">:</span>             <span class="s2">&quot;site&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+<span class="o">...</span><span class="p">:</span>             <span class="s2">&quot;device_type&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+<span class="o">...</span><span class="p">:</span>             <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;planned&quot;</span><span class="p">,</span>
+<span class="o">...</span><span class="p">:</span>         <span class="p">},</span>
+<span class="o">...</span><span class="p">:</span>         <span class="p">{</span>
+<span class="o">...</span><span class="p">:</span>             <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dmi01-scranton-sw02&quot;</span><span class="p">,</span>
+<span class="o">...</span><span class="p">:</span>             <span class="s2">&quot;device_role&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="o">...</span><span class="p">:</span>             <span class="s2">&quot;site&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+<span class="o">...</span><span class="p">:</span>             <span class="s2">&quot;device_type&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+<span class="o">...</span><span class="p">:</span>             <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;planned&quot;</span><span class="p">,</span>
+<span class="o">...</span><span class="p">:</span>         <span class="p">},</span>
+<span class="o">...</span><span class="p">:</span>     <span class="p">],</span>
+<span class="o">...</span><span class="p">:</span> <span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="n">devices</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="n">EndpointAsIterator</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api&#39;</span><span class="p">,</span>
+<span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/devices/&#39;</span><span class="p">)</span>
+</code></pre></div></p>
+<p>To continue working with <code>EndpointAsIterator</code> see <a href="#endpointasiterator"><code>EndpointAsIterator</code></a></p>
+</li>
+</ul>
+<h4 id="endpointid">EndpointId<a class="headerlink" href="#endpointid" title="Permanent link">#</a></h4>
+<p><code>EndpointId</code> describes NetBox API endpoint id object (<code>'/dcim/devices/{id}'</code>, <code>'/ipam/roles/{id}'</code>, ...) and, at the same time, it's a coroutine for interacting with NetBox API endpoint id.</p>
+<p><code>EndpointId</code> object has all attributes of NetBox object.
+<code>EndpointId</code> object has <code>.response</code> attribute, containing <code>httpx.Response</code> object.</p>
+<p>Where does <code>some_device</code> from? See <a href="#endpoint"><code>Endpoint</code></a></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># we sent 1 http request earlier:</span>
+<span class="c1"># some_device = await a.dcim_devices(get={&quot;name&quot;: &quot;dmi01-scranton-rtr01&quot;})</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="n">some_device</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="n">EndpointId</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api/dcim/devices/9/&#39;</span><span class="p">,</span>
+<span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/devices/&#39;</span><span class="p">)</span>
+
+<span class="c1"># use &#39;tab&#39; autocompletion</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="n">some_device</span><span class="o">.</span><span class="n">id</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="mi">9</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="n">some_device</span><span class="o">.</span><span class="n">name</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="s1">&#39;dmi01-scranton-rtr01&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">17</span><span class="p">]:</span> <span class="n">some_device</span><span class="o">.</span><span class="n">device_type</span><span class="o">.</span><span class="n">model</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">17</span><span class="p">]:</span> <span class="s1">&#39;ISR 1111-8P&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">18</span><span class="p">]:</span> <span class="n">some_device</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">18</span><span class="p">]:</span> 
+<span class="p">{</span><span class="s1">&#39;count&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+ <span class="s1">&#39;next&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="s1">&#39;previous&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="s1">&#39;results&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+   <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="s1">&#39;https://demo.netbox.dev/api/dcim/devices/9/&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;display&#39;</span><span class="p">:</span> <span class="s1">&#39;dmi01-scranton-rtr01&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;dmi01-scranton-rtr01&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;device_type&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="s1">&#39;https://demo.netbox.dev/api/dcim/device-types/6/&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;display&#39;</span><span class="p">:</span> <span class="s1">&#39;ISR 1111-8P&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;manufacturer&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+     <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="s1">&#39;https://demo.netbox.dev/api/dcim/manufacturers/3/&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;display&#39;</span><span class="p">:</span> <span class="s1">&#39;Cisco&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Cisco&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;slug&#39;</span><span class="p">:</span> <span class="s1">&#39;cisco&#39;</span><span class="p">},</span>
+    <span class="s1">&#39;model&#39;</span><span class="p">:</span> <span class="s1">&#39;ISR 1111-8P&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;slug&#39;</span><span class="p">:</span> <span class="s1">&#39;isr1111&#39;</span><span class="p">},</span>
+   <span class="s1">&#39;device_role&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="o">...</span>
+</code></pre></div>
+<p>You can run each <code>EndpointId</code> object:</p>
+<ul>
+<li>to send http request and get results/new <code>EndpointId</code> object
+    <div class="highlight"><pre><span></span><code><span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="n">some_device</span> <span class="o">=</span> <span class="k">await</span> <span class="n">some_device</span><span class="p">(</span><span class="n">patch</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;planned&quot;</span><span class="p">})</span>
+
+<span class="c1"># some_device is a new &#39;EndpointId&#39; object</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">20</span><span class="p">]:</span> <span class="n">some_device</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">20</span><span class="p">]:</span> <span class="n">EndpointId</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api/dcim/devices/9/&#39;</span><span class="p">,</span>
+<span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/devices/</span><span class="si">{id}</span><span class="s1">/&#39;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">21</span><span class="p">]:</span> <span class="n">some_device</span><span class="o">.</span><span class="n">status</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">21</span><span class="p">]:</span> <span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;planned&#39;</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;Planned&#39;</span><span class="p">}</span>
+</code></pre></div></li>
+<li>
+<p>to send http requests and get <code>EndpointIdAsIterator</code> with results/new <code>EndpointId</code> objects. All http requests in this coroutine will be run serially using <code>await</code>.
+    <div class="highlight"><pre><span></span><code><span class="n">In</span> <span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="n">some_devices</span> <span class="o">=</span> <span class="k">await</span> <span class="n">some_device</span><span class="p">(</span><span class="n">get</span><span class="o">=</span><span class="p">{},</span> <span class="n">patch</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;active&quot;</span><span class="p">})</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="n">some_devices</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="n">EndpointIdAsIterator</span><span class="p">()</span>
+</code></pre></div></p>
+<p>To continue working with <code>EndpointIdAsIterator</code> see <a href="#endpointidasiterator"><code>EndpointIdAsIterator</code></a></p>
+</li>
+</ul>
+<h4 id="endpointiditerator">EndpointIdIterator<a class="headerlink" href="#endpointiditerator" title="Permanent link">#</a></h4>
+<p><code>EndpointIdIterator</code> is an iterator with <a href="#endpointid"><code>EndpointId</code></a> objects.</p>
+<p><code>EndpointIdIterator</code> contains the multiple <code>EndpointId</code> objects, if <code>Endpoint</code> http
+request returns more than one result (<code>httpx.Response.json()['results']</code>) and, at the
+same time, <code>EndpointIdIterator</code> object is a service coroutine for using with service <code>EndpointBase.request</code> coroutine</p>
+<p>Where does <code>all_devices</code> from? See <a href="#endpoint"><code>Endpoint</code></a>
+<div class="highlight"><pre><span></span><code><span class="c1"># we sent 1 http request earlier:</span>
+<span class="c1"># all_devices = await a.dcim_devices(get={})</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">31</span><span class="p">]:</span> <span class="n">all_devices</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">31</span><span class="p">]:</span> <span class="n">EndpointIdIterator</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api&#39;</span><span class="p">,</span>
+<span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/devices/&#39;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">32</span><span class="p">]:</span> <span class="nb">list</span><span class="p">(</span><span class="n">all_devices</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">32</span><span class="p">]:</span>
+<span class="p">[</span><span class="n">EndpointId</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api/dcim/devices/107/&#39;</span><span class="p">,</span>
+ <span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/devices/&#39;</span><span class="p">),</span>
+ <span class="n">EndpointId</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api/dcim/devices/88/&#39;</span><span class="p">,</span>
+ <span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/devices/&#39;</span><span class="p">),</span>
+ <span class="n">EndpointId</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api/dcim/devices/89/&#39;</span><span class="p">,</span>
+ <span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/devices/&#39;</span><span class="p">),</span>
+<span class="o">...</span><span class="p">]</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">33</span><span class="p">]:</span> <span class="n">all_devices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">33</span><span class="p">]:</span> <span class="s1">&#39;Dingdong&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">34</span><span class="p">]:</span> <span class="n">all_devices</span><span class="p">[</span><span class="mi">49</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">34</span><span class="p">]:</span> <span class="s1">&#39;ncsu118-distswitch1&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">35</span><span class="p">]:</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_devices</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">35</span><span class="p">]:</span> <span class="mi">50</span>
+</code></pre></div></p>
+<h4 id="endpointasiterator">EndpointAsIterator<a class="headerlink" href="#endpointasiterator" title="Permanent link">#</a></h4>
+<p><code>EndpointAsIterator</code> is an iterator with <code>EndpointBase.request</code> (it's service http
+request coroutine) coroutines for pending http requests and running in event loop with <code>asyncio.gather</code> or <code>asyncio.as_completed</code>.</p>
+<p>Where does <code>devices</code> from? See <a href="#endpoint"><code>Endpoint</code></a>
+<div class="highlight"><pre><span></span><code><span class="c1"># we planned to send 4 http requests earlier:</span>
+<span class="c1"># devices = await a.dcim_devices(</span>
+<span class="c1">#     get=[</span>
+<span class="c1">#         {&quot;name&quot;: &quot;dmi01-scranton-rtr01&quot;},</span>
+<span class="c1">#         {&quot;name&quot;: &quot;dmi01-scranton-sw01&quot;},</span>
+<span class="c1">#     ],</span>
+<span class="c1">#     post=[</span>
+<span class="c1">#         {</span>
+<span class="c1">#             &quot;name&quot;: &quot;dmi01-scranton-rtr02&quot;,</span>
+<span class="c1">#             &quot;device_role&quot;: 1,</span>
+<span class="c1">#             &quot;site&quot;: 10,</span>
+<span class="c1">#             &quot;device_type&quot;: 6,</span>
+<span class="c1">#             &quot;status&quot;: &quot;planned&quot;,</span>
+<span class="c1">#         },</span>
+<span class="c1">#         {</span>
+<span class="c1">#             &quot;name&quot;: &quot;dmi01-scranton-sw02&quot;,</span>
+<span class="c1">#             &quot;device_role&quot;: 1,</span>
+<span class="c1">#             &quot;site&quot;: 10,</span>
+<span class="c1">#             &quot;device_type&quot;: 7,</span>
+<span class="c1">#             &quot;status&quot;: &quot;planned&quot;,</span>
+<span class="c1">#         },</span>
+<span class="c1">#     ],</span>
+<span class="c1"># )</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">36</span><span class="p">]:</span> <span class="n">devices</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">36</span><span class="p">]:</span> <span class="n">EndpointAsIterator</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api&#39;</span><span class="p">,</span>
+<span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/devices/&#39;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">37</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">asyncio</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">38</span><span class="p">]:</span> <span class="n">devices</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">some_devices</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">39</span><span class="p">]:</span> <span class="n">devices</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">39</span><span class="p">]:</span> 
+<span class="p">[</span><span class="n">EndpointId</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api/dcim/devices/9/&#39;</span><span class="p">,</span>
+ <span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/devices/&#39;</span><span class="p">),</span>
+ <span class="n">EndpointId</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api/dcim/devices/22/&#39;</span><span class="p">,</span>
+ <span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/devices/&#39;</span><span class="p">),</span>
+ <span class="n">EndpointId</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api/dcim/devices/115/&#39;</span><span class="p">,</span>
+ <span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/devices/&#39;</span><span class="p">),</span>
+ <span class="n">EndpointId</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api/dcim/devices/114/&#39;</span><span class="p">,</span>
+ <span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/devices/&#39;</span><span class="p">)]</span>
+</code></pre></div></p>
+<h4 id="endpointidasiterator">EndpointIdAsIterator<a class="headerlink" href="#endpointidasiterator" title="Permanent link">#</a></h4>
+<p><code>EndpointIdAsIterator</code> is an iterator with <a href="#endpointid"><code>EndpointId</code></a> objects.</p>
+<p><code>EndpointIdAsIterator</code> contains the results of modifying a single NetBox object (with endpoint id), using the <code>EndpointId</code> coroutine, running with multiple arguments. 
+These results are iterated according to the order of the <code>EndpointId</code> arguments (see example below).</p>
+<p>Where does <code>some_devices</code> from? See <a href="#endpointid"><code>EndpointId</code></a></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># we sent 2 http requests earlier:</span>
+<span class="c1"># some_devices = await some_devices(get={}, patch={&quot;status&quot;: &quot;active&quot;})</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">24</span><span class="p">]:</span> <span class="n">some_devices</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">24</span><span class="p">]:</span> <span class="n">EndpointIdAsIterator</span><span class="p">()</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">25</span><span class="p">]:</span> <span class="nb">list</span><span class="p">(</span><span class="n">some_devices</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">25</span><span class="p">]:</span>
+<span class="p">[</span><span class="n">EndpointId</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api/dcim/devices/9/&#39;</span><span class="p">,</span>
+ <span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/devices/</span><span class="si">{id}</span><span class="s1">/&#39;</span><span class="p">),</span>
+ <span class="n">EndpointId</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api/dcim/devices/9/&#39;</span><span class="p">,</span>
+ <span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/devices/</span><span class="si">{id}</span><span class="s1">/&#39;</span><span class="p">)]</span>
+
+<span class="c1"># &#39;get={}&#39; results</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">26</span><span class="p">]:</span> <span class="n">some_devices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">26</span><span class="p">]:</span> <span class="s1">&#39;dmi01-scranton-rtr01&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">27</span><span class="p">]:</span> <span class="n">some_devices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">status</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">27</span><span class="p">]:</span> <span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;planned&#39;</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;Planned&#39;</span><span class="p">}</span>
+
+<span class="c1"># &#39;patch={&quot;status&quot;: &quot;active&quot;}&#39; results</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">28</span><span class="p">]:</span> <span class="n">some_devices</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">28</span><span class="p">]:</span> <span class="s1">&#39;dmi01-scranton-rtr01&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">29</span><span class="p">]:</span> <span class="n">some_devices</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">status</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">29</span><span class="p">]:</span> <span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;Active&#39;</span><span class="p">}</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">30</span><span class="p">]:</span> <span class="nb">len</span><span class="p">(</span><span class="n">some_devices</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">30</span><span class="p">]:</span> <span class="mi">2</span>
+</code></pre></div>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
+<p>At first, get <code>Api</code> object and run <code>openapi</code> coroutine(btw, it works with async context
+manager)
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">anac</span> <span class="kn">import</span> <span class="n">api</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">api</span><span class="p">(</span>
+    <span class="s2">&quot;https://demo.netbox.dev&quot;</span><span class="p">,</span>
+    <span class="n">token</span><span class="o">=</span><span class="s2">&quot;cf1dc7b04de5f27cfc93aba9e3f537d2ad6fdf8c&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="c1"># get openapi spec and create attributes/endpoints   </span>
+<span class="k">await</span> <span class="n">a</span><span class="o">.</span><span class="n">openapi</span><span class="p">()</span>
+</code></pre></div>
+and then:</p>
+<h4 id="get-some-device-and-patch-it"><code>get</code> some device and <code>patch</code> it<a class="headerlink" href="#get-some-device-and-patch-it" title="Permanent link">#</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">some_device</span> <span class="o">=</span> <span class="k">await</span> <span class="n">a</span><span class="o">.</span><span class="n">dcim_devices</span><span class="p">(</span><span class="n">get</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dmi01-rochster-sw01&quot;</span><span class="p">})</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">some_device</span><span class="o">.</span><span class="n">name</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="s1">&#39;dmi01-rochster-sw01&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">some_device</span><span class="o">.</span><span class="n">status</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;Active&#39;</span><span class="p">}</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">some_device</span> <span class="o">=</span> <span class="k">await</span> <span class="n">some_device</span><span class="p">(</span><span class="n">patch</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;failed&quot;</span><span class="p">})</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">some_device</span><span class="o">.</span><span class="n">status</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;failed&#39;</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;Failed&#39;</span><span class="p">}</span>
+</code></pre></div>
+<h4 id="get-some-2-devices-and-put-patch-them"><code>get</code> some 2 devices and <code>put</code> + <code>patch</code> them<a class="headerlink" href="#get-some-2-devices-and-put-patch-them" title="Permanent link">#</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">some_devices</span> <span class="o">=</span> <span class="k">await</span> <span class="n">a</span><span class="o">.</span><span class="n">dcim_devices</span><span class="p">(</span>
+    <span class="o">...</span><span class="p">:</span>     <span class="n">get</span><span class="o">=</span><span class="p">[</span>
+    <span class="o">...</span><span class="p">:</span>        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dmi01-rochster-sw01&quot;</span><span class="p">},</span>
+    <span class="o">...</span><span class="p">:</span>        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dmi01-rochester-rtr01&quot;</span><span class="p">},</span>
+    <span class="o">...</span><span class="p">:</span>     <span class="p">]</span>
+    <span class="o">...</span><span class="p">:</span> <span class="p">)</span>
+
+<span class="c1"># EndpointAsIterator is a coroutine iterator with 2 coroutines</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">some_devices</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">EndpointAsIterator</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api&#39;</span><span class="p">,</span>
+<span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/devices/&#39;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">asyncio</span>
+
+<span class="c1"># run 2 coroutines in the event loop</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="n">some_devices</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">some_devices</span><span class="p">)</span>
+
+<span class="c1"># EndpointId is a NetBox &#39;/dcim/devices/&#39; object and coroutine</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="n">some_devices</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">11</span><span class="p">]:</span> 
+<span class="p">[</span><span class="n">EndpointId</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api/dcim/devices/21/&#39;</span><span class="p">,</span>
+ <span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/devices/&#39;</span><span class="p">),</span>
+ <span class="n">EndpointId</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api/dcim/devices/8/&#39;</span><span class="p">,</span>
+ <span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/devices/&#39;</span><span class="p">)]</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">]:</span> <span class="n">patch_some_devices</span> <span class="o">=</span> <span class="p">[</span><span class="n">coro</span><span class="p">(</span><span class="n">patch</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;failed&quot;</span><span class="p">})</span> <span class="k">for</span> <span class="n">coro</span> <span class="ow">in</span> <span class="n">some_devices</span><span class="p">]</span>
+
+<span class="c1"># run 2 coroutines in the event loop</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="n">patch_some_devices</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">patch_some_devices</span><span class="p">)</span>
+
+<span class="c1"># EndpointId is a coroutine, again</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="n">patch_some_devices</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">14</span><span class="p">]:</span> 
+<span class="p">[</span><span class="n">EndpointId</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api/dcim/devices/21/&#39;</span><span class="p">,</span>
+ <span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/devices/</span><span class="si">{id}</span><span class="s1">/&#39;</span><span class="p">),</span>
+ <span class="n">EndpointId</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api/dcim/devices/8/&#39;</span><span class="p">,</span>
+ <span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/devices/</span><span class="si">{id}</span><span class="s1">/&#39;</span><span class="p">)]</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="n">patch_some_devices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="s1">&#39;dmi01-rochster-sw01&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="n">patch_some_devices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">status</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;failed&#39;</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;Failed&#39;</span><span class="p">}</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">17</span><span class="p">]:</span> <span class="n">patch_some_devices</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">17</span><span class="p">]:</span> <span class="s1">&#39;dmi01-rochester-rtr01&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">18</span><span class="p">]:</span> <span class="n">patch_some_devices</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">status</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">18</span><span class="p">]:</span> <span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;failed&#39;</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;Failed&#39;</span><span class="p">}</span>
+</code></pre></div>
+<h4 id="get-all-devices"><code>get</code> all devices<a class="headerlink" href="#get-all-devices" title="Permanent link">#</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="n">all_devices</span> <span class="o">=</span> <span class="k">await</span> <span class="n">a</span><span class="o">.</span><span class="n">dcim_devices</span><span class="p">(</span><span class="n">get</span><span class="o">=</span><span class="p">{})</span>
+<span class="c1"># or</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">20</span><span class="p">]:</span> <span class="n">all_devices</span> <span class="o">=</span> <span class="k">await</span> <span class="n">a</span><span class="o">.</span><span class="n">dcim_devices</span><span class="p">()</span>
+
+<span class="c1"># EndpointIdIterator is an coroutine iterator with EndpointId objects</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">21</span><span class="p">]:</span> <span class="n">all_devices</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">21</span><span class="p">]:</span> <span class="n">EndpointIdIterator</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api&#39;</span><span class="p">,</span>
+<span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/devices/&#39;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_devices</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="mi">50</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="n">all_devices</span><span class="p">[</span><span class="mi">49</span><span class="p">]</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="n">EndpointId</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api/dcim/devices/95/&#39;</span><span class="p">,</span>
+<span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/devices/&#39;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">24</span><span class="p">]:</span> <span class="n">all_devices</span><span class="p">[</span><span class="mi">49</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">24</span><span class="p">]:</span> <span class="s1">&#39;ncsu118-distswitch1&#39;</span>
+
+<span class="c1"># by default, &#39;limit&#39; parameter = 50,</span>
+<span class="c1"># but you can run &#39;get&#39; request with custom &#39;limit&#39;</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">25</span><span class="p">]:</span> <span class="n">all_devices</span> <span class="o">=</span> <span class="k">await</span> <span class="n">a</span><span class="o">.</span><span class="n">dcim_devices</span><span class="p">(</span><span class="n">get</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">})</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">26</span><span class="p">]:</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_devices</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">26</span><span class="p">]:</span> <span class="mi">75</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">27</span><span class="p">]:</span> <span class="n">all_devices</span><span class="p">[</span><span class="mi">74</span><span class="p">]</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">27</span><span class="p">]:</span> <span class="n">EndpointId</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api/dcim/devices/106/&#39;</span><span class="p">,</span>
+<span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/devices/&#39;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">28</span><span class="p">]:</span> <span class="n">all_devices</span><span class="p">[</span><span class="mi">74</span><span class="p">]</span><span class="o">.</span><span class="n">id</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">28</span><span class="p">]:</span> <span class="mi">106</span>
+</code></pre></div>
+<h4 id="get-all-devices-and-post-2-new-devices"><code>get</code> all devices and <code>post</code> 2 new devices<a class="headerlink" href="#get-all-devices-and-post-2-new-devices" title="Permanent link">#</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">In</span> <span class="p">[</span><span class="mi">29</span><span class="p">]:</span> <span class="n">all_test</span> <span class="o">=</span> <span class="k">await</span> <span class="n">a</span><span class="o">.</span><span class="n">dcim_devices</span><span class="p">(</span>
+    <span class="o">...</span><span class="p">:</span>     <span class="n">get</span><span class="o">=</span><span class="p">{},</span>
+    <span class="o">...</span><span class="p">:</span>     <span class="n">post</span><span class="o">=</span><span class="p">[</span>
+    <span class="o">...</span><span class="p">:</span>         <span class="p">{</span>
+    <span class="o">...</span><span class="p">:</span>             <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;test1&quot;</span><span class="p">,</span>
+    <span class="o">...</span><span class="p">:</span>             <span class="s2">&quot;device_role&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="o">...</span><span class="p">:</span>             <span class="s2">&quot;site&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="o">...</span><span class="p">:</span>             <span class="s2">&quot;device_type&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="o">...</span><span class="p">:</span>             <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;planned&quot;</span><span class="p">,</span>
+    <span class="o">...</span><span class="p">:</span>         <span class="p">},</span>
+    <span class="o">...</span><span class="p">:</span>         <span class="p">{</span>
+    <span class="o">...</span><span class="p">:</span>             <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;test2&quot;</span><span class="p">,</span>
+    <span class="o">...</span><span class="p">:</span>             <span class="s2">&quot;device_role&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="o">...</span><span class="p">:</span>             <span class="s2">&quot;site&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="o">...</span><span class="p">:</span>             <span class="s2">&quot;device_type&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="o">...</span><span class="p">:</span>             <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;planned&quot;</span><span class="p">,</span>
+    <span class="o">...</span><span class="p">:</span>         <span class="p">},</span>
+    <span class="o">...</span><span class="p">:</span>     <span class="p">],</span>
+    <span class="o">...</span><span class="p">:</span> <span class="p">)</span>
+
+<span class="c1"># run 3 coroutines in the event loop</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">30</span><span class="p">]:</span> <span class="n">all_test</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">all_test</span><span class="p">)</span>
+
+<span class="c1"># EndpointIdIterator is an coroutine iterator with EndpointId objects</span>
+<span class="c1"># EndpointId is a NetBox &#39;/dcim/devices/&#39; object and coroutine</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">31</span><span class="p">]:</span> <span class="n">all_test</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">31</span><span class="p">]:</span> 
+<span class="p">[</span><span class="n">EndpointIdIterator</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api&#39;</span><span class="p">,</span>
+ <span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/devices/&#39;</span><span class="p">),</span>
+ <span class="n">EndpointId</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api/dcim/devices/110/&#39;</span><span class="p">,</span>
+ <span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/devices/&#39;</span><span class="p">),</span>
+ <span class="n">EndpointId</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">Api</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://demo.netbox.dev/api/dcim/devices/111/&#39;</span><span class="p">,</span>
+ <span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;/dcim/devices/&#39;</span><span class="p">)]</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">32</span><span class="p">]:</span> <span class="n">all_test</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">49</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">32</span><span class="p">]:</span> <span class="s1">&#39;ncsu118-distswitch1&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">33</span><span class="p">]:</span> <span class="n">all_test</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">34</span><span class="p">]:</span> <span class="s1">&#39;test1&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">35</span><span class="p">]:</span> <span class="n">all_test</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">35</span><span class="p">]:</span> <span class="s1">&#39;test2&#39;</span>
+
+<span class="c1"># httpx.Response is available with .response attribute</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">36</span><span class="p">]:</span> <span class="n">all_test</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">36</span><span class="p">]:</span>
+<span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">110</span><span class="p">,</span>
+ <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="s1">&#39;https://demo.netbox.dev/api/dcim/devices/110/&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;display&#39;</span><span class="p">:</span> <span class="s1">&#39;test1&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test1&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;device_type&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="s1">&#39;https://demo.netbox.dev/api/dcim/device-types/1/&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;display&#39;</span><span class="p">:</span> <span class="s1">&#39;MX480&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;manufacturer&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+  <span class="o">...</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="post-or-put-using-a-name-instead-of-an-id"><code>post</code> or <code>put</code> using a <code>name</code> instead of an <code>id</code><a class="headerlink" href="#post-or-put-using-a-name-instead-of-an-id" title="Permanent link">#</a></h4>
+<p>It is not always convenient to send a <code>post</code> or <code>put</code> http request, using only object <code>id</code>s. </p>
+<p>You can use <code>name</code>s or other keys. For example:
+<div class="highlight"><pre><span></span><code><span class="n">In</span> <span class="p">[</span><span class="mi">37</span><span class="p">]:</span> <span class="n">test3_device</span> <span class="o">=</span> <span class="k">await</span> <span class="n">a</span><span class="o">.</span><span class="n">dcim_devices</span><span class="p">(</span>
+     <span class="o">...</span><span class="p">:</span>     <span class="n">post</span><span class="o">=</span><span class="p">{</span>
+     <span class="o">...</span><span class="p">:</span>         <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;test3&quot;</span><span class="p">,</span>
+     <span class="o">...</span><span class="p">:</span>         <span class="s2">&quot;device_role&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Access Switch&quot;</span><span class="p">},</span>
+     <span class="o">...</span><span class="p">:</span>         <span class="s2">&quot;site&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;DM-Rochester&quot;</span><span class="p">},</span>
+     <span class="o">...</span><span class="p">:</span>         <span class="s2">&quot;device_type&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;C9200-48P&quot;</span><span class="p">},</span>
+     <span class="o">...</span><span class="p">:</span>         <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;planned&quot;</span><span class="p">,</span>
+     <span class="o">...</span><span class="p">:</span>     <span class="p">}</span>
+     <span class="o">...</span><span class="p">:</span> <span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">38</span><span class="p">]:</span> <span class="n">test3_device</span><span class="o">.</span><span class="n">name</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">38</span><span class="p">]:</span> <span class="s1">&#39;test3&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">39</span><span class="p">]:</span> <span class="n">test3_device</span><span class="o">.</span><span class="n">device_role</span><span class="o">.</span><span class="n">name</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">39</span><span class="p">]:</span> <span class="s1">&#39;Access Switch&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">40</span><span class="p">]:</span> <span class="n">test3_device</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">name</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">40</span><span class="p">]:</span> <span class="s1">&#39;DM-Rochester&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">41</span><span class="p">]:</span> <span class="n">test3_device</span><span class="o">.</span><span class="n">device_type</span><span class="o">.</span><span class="n">model</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">41</span><span class="p">]:</span> <span class="s1">&#39;C9200-48P&#39;</span>
+</code></pre></div></p>
+<p>Or you can write a coroutine, that will search the <code>id</code> by key:</p>
+<div class="highlight"><pre><span></span><code><span class="n">In</span> <span class="p">[</span><span class="mi">42</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
+    <span class="o">...</span><span class="p">:</span>
+    <span class="o">...</span><span class="p">:</span>
+    <span class="o">...</span><span class="p">:</span> <span class="k">async</span> <span class="k">def</span> <span class="nf">finder</span><span class="p">(</span><span class="n">endpoint</span><span class="p">:</span> <span class="s2">&quot;Endpoint&quot;</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
+    <span class="o">...</span><span class="p">:</span>     <span class="n">endpoint_id</span> <span class="o">=</span> <span class="k">await</span> <span class="n">endpoint</span><span class="p">(</span><span class="n">get</span><span class="o">=</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="o">...</span><span class="p">:</span>     <span class="k">return</span> <span class="n">endpoint_id</span><span class="o">.</span><span class="n">id</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">43</span><span class="p">]:</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="o">...</span><span class="p">:</span>     <span class="s2">&quot;device_role&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">dcim_device_roles</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Access Switch&quot;</span><span class="p">}),</span>
+    <span class="o">...</span><span class="p">:</span>     <span class="s2">&quot;site&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">dcim_sites</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;DM-Rochester&quot;</span><span class="p">}),</span>
+    <span class="o">...</span><span class="p">:</span>     <span class="s2">&quot;device_type&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">dcim_device_types</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;C9200-48P&quot;</span><span class="p">}),</span>
+    <span class="o">...</span><span class="p">:</span> <span class="p">}</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">44</span><span class="p">]:</span> <span class="n">coros</span> <span class="o">=</span> <span class="p">[</span><span class="n">finder</span><span class="p">(</span><span class="o">*</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">45</span><span class="p">]:</span> <span class="n">ids</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">coros</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">46</span><span class="p">]:</span> <span class="n">ids</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">46</span><span class="p">]:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">47</span><span class="p">]:</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;test3&quot;</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;planned&quot;</span><span class="p">,</span> <span class="o">**</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">ids</span><span class="p">))}</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">48</span><span class="p">]:</span> <span class="n">d</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">48</span><span class="p">]:</span>
+<span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test3&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;planned&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;device_role&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+ <span class="s1">&#39;site&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+ <span class="s1">&#39;device_type&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">}</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">49</span><span class="p">]:</span> <span class="n">test3_device</span> <span class="o">=</span> <span class="k">await</span> <span class="n">a</span><span class="o">.</span><span class="n">dcim_devices</span><span class="p">(</span><span class="n">post</span><span class="o">=</span><span class="n">d</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">50</span><span class="p">]:</span> <span class="n">test3_device</span><span class="o">.</span><span class="n">device_role</span><span class="o">.</span><span class="n">name</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">50</span><span class="p">]:</span> <span class="s1">&#39;Access Switch&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">51</span><span class="p">]:</span> <span class="n">test3_device</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">name</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">51</span><span class="p">]:</span> <span class="s1">&#39;DM-Rochester&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">52</span><span class="p">]:</span> <span class="n">test3_device</span><span class="o">.</span><span class="n">device_type</span><span class="o">.</span><span class="n">model</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">52</span><span class="p">]:</span> <span class="s1">&#39;C9200-48P&#39;</span>
+</code></pre></div>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Introduction
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../exceptions/" class="md-footer__link md-footer__link--next" aria-label="Next: Exceptions" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Exceptions
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/timeforplanb123" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/timeforplanb1" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top", "navigation.instant"], "search": "../assets/javascripts/workers/search.85cb4492.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a877e258.min.js"></script>
+      
+    
+  </body>
+</html>
